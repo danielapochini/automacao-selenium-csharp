@@ -6,12 +6,19 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
+using Xunit.Abstractions;
 using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.PageNavigation
 {
     public class TestPageNavigation : IAssemblyFixture<BaseClass>
     {
+        private readonly ITestOutputHelper _outputHelper;
+
+        public TestPageNavigation(ITestOutputHelper outputHelper)
+        {
+            this._outputHelper = outputHelper;
+        }
         [Fact]
         public void OpenPage()
         {
@@ -22,7 +29,7 @@ namespace AutomacaoSeleniumCSharp.TestScript.PageNavigation
             //ObjectRepository.Driver.Navigate().GoToUrl(ObjectRepository.Config.GetWebsite());
 
             NavigationHelper.NavigateToUrl(ObjectRepository.Config.GetWebsite());
-
+            _outputHelper.WriteLine("Title of the page: {0}", WindowHelper.GetTitle());
         }
     }
 }
