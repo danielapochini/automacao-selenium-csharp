@@ -9,9 +9,11 @@ namespace AutomacaoSeleniumCSharp.Settings
     public class AppSettings
     {
         public string Browser { get; set; }
-        public string Username { get; set; } 
+        public string Username { get; set; }
         public string Password { get; set; }
         public string Website { get; set; }
+        public string PageLoadTimeOut { get; set; }
+        public string ElementLoadTimeOut { get; set; }
 
         public AppSettings()
         {
@@ -19,6 +21,8 @@ namespace AutomacaoSeleniumCSharp.Settings
             Username = ReturnParamAppSettings("User");
             Password = ReturnParamAppSettings("Password");
             Website = ReturnParamAppSettings("Website");
+            PageLoadTimeOut = ReturnParamAppSettings("PageLoadTimeOut");
+            ElementLoadTimeOut = ReturnParamAppSettings("ElementLoadTimeOut");
         }
          
         public static string ReturnParamAppSettings(string nameParam)

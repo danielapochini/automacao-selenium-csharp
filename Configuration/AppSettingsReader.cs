@@ -37,5 +37,21 @@ namespace AutomacaoSeleniumCSharp.Configuration
         {
             return AppSettings.Website;
         }
+
+        public int GetPageLoadTimeOut()
+        {
+            string timeout = AppSettings.PageLoadTimeOut;
+            if (timeout == null)
+                return 30;
+            return Convert.ToInt32(timeout);
+        }
+
+        public int GetElementLoadTimeOut()
+        {
+            string timeout = AppSettings.ElementLoadTimeOut;
+            if (timeout == null)
+                return 30;
+            return Convert.ToInt32(timeout);
+        }
     }
 }

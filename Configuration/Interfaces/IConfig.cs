@@ -11,5 +11,7 @@ namespace AutomacaoSeleniumCSharp.Configuration.Interfaces
         string GetUsername();
         string GetPassword();
         string GetWebsite();
+        int GetPageLoadTimeOut();
+        int GetElementLoadTimeOut();
     }
 }

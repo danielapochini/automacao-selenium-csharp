@@ -37,7 +37,6 @@ namespace AutomacaoSeleniumCSharp.TestScript.WebElement
             {
                 _outputHelper.WriteLine("Exception" + e);
             }
-            
         }
     }
 }
