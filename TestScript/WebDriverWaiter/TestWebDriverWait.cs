@@ -9,6 +9,7 @@ using System.Text;
 using Xunit;
 using Xunit.Abstractions;
 using Xunit.Extensions.AssemblyFixture;
+using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace AutomacaoSeleniumCSharp.TestScript.WebDriverWaiter
 {
@@ -49,8 +50,7 @@ namespace AutomacaoSeleniumCSharp.TestScript.WebDriverWaiter
             wait.Until(WaitForLastElement()).Click();
             //_outputHelper.WriteLine("Title : {0}", wait.Until(WaitForPageTitle()));
         }
-
-
+          
         //acc -spe fun<in,out> { () => {}}
 
         private Func<IWebDriver, bool> WaitForSearchBox()
