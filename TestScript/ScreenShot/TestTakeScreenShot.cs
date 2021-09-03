@@ -12,7 +12,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.ScreenShot
 {
-    public class TestTakeScreenShot : IAssemblyFixture<BaseClass>
+    public class TestTakeScreenShot : IClassFixture<BaseClass>
     {
         private readonly ITestOutputHelper _outputHelper;
 
@@ -29,7 +29,7 @@ namespace AutomacaoSeleniumCSharp.TestScript.ScreenShot
             TextBoxHelper.TypeInTextBox(By.Id("Bugzilla_login"), ObjectRepository.Config.GetUsername());
             TextBoxHelper.TypeInTextBox(By.Id("Bugzilla_password"), ObjectRepository.Config.GetPassword());
             ButtonHelper.ClickButton(By.Id("log_in"));
-             
+            LinkHelper.ClickLink(By.LinkText("Testng"));
             GenericHelper.TakeScreenshot();
             GenericHelper.TakeScreenshot("Test.jpeg");
         }

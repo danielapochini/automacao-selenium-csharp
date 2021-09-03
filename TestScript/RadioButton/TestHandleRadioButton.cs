@@ -11,7 +11,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.RadioButton
 {
-    public class TestHandleRadioButton : IAssemblyFixture<BaseClass>
+    public class TestHandleRadioButton : IClassFixture<BaseClass>
     {
         private readonly ITestOutputHelper _outputHelper;
 
@@ -31,7 +31,7 @@ namespace AutomacaoSeleniumCSharp.TestScript.RadioButton
             TextBoxHelper.TypeInTextBox(By.Id("Bugzilla_login"), ObjectRepository.Config.GetUsername());
             TextBoxHelper.TypeInTextBox(By.Id("Bugzilla_password"), ObjectRepository.Config.GetPassword());
             ButtonHelper.ClickButton(By.Id("log_in"));
-
+            LinkHelper.ClickLink(By.LinkText("Testng"));
             LinkHelper.ClickLink(By.XPath("//div[@id='header']/ul[1]/li[9]/a"));
             LinkHelper.ClickLink(By.XPath("//dt[@id='parameters']/a"));
 

@@ -10,7 +10,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.MultipleBrowser
 {
-    public class TestMultipleBrowserWindow : IAssemblyFixture<BaseClass>
+    public class TestMultipleBrowserWindow : IClassFixture<BaseClass>
     {
         [Fact]
         public void TestMultipleWindow()

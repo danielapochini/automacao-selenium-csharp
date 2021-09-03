@@ -10,7 +10,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.TestBox
 {
-    public class TestTestBox : IAssemblyFixture<BaseClass>
+    public class TestTestBox : IClassFixture<BaseClass>
     {
         [Fact]
         public void TestBox()

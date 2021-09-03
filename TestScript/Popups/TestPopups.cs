@@ -10,7 +10,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.Popups
 {
-    public class TestPopups : IAssemblyFixture<BaseClass>
+    public class TestPopups : IClassFixture<BaseClass>
     {
         [Fact]
         public void TestAlert()

@@ -10,7 +10,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.HyperLink
 {
-    public class TestHyperLink : IAssemblyFixture<BaseClass>
+    public class TestHyperLink : IClassFixture<BaseClass>
     {
         [Fact]
         public void ClickLink()

@@ -11,7 +11,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.PageNavigation
 {
-    public class TestPageNavigation : IAssemblyFixture<BaseClass>
+    public class TestPageNavigation : IClassFixture<BaseClass>
     {
         private readonly ITestOutputHelper _outputHelper;
 

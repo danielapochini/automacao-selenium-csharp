@@ -12,7 +12,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.MouseAction
 {
-    public class TestMouseAction : IAssemblyFixture<BaseClass>
+    public class TestMouseAction : IClassFixture<BaseClass>
     {
         [Fact]
         public void TestContextClick()

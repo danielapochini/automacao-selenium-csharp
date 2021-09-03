@@ -12,7 +12,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.FindElements
 {
-    public class TestHandleElements : IAssemblyFixture<BaseClass>
+    public class TestHandleElements : IClassFixture<BaseClass>
     {
         private readonly ITestOutputHelper _outputHelper;
 

@@ -13,7 +13,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.WebElement
 {
-    public class TestWebElement : IAssemblyFixture<BaseClass>
+    public class TestWebElement : IClassFixture<BaseClass>
     {
         private readonly ITestOutputHelper _outputHelper;
 

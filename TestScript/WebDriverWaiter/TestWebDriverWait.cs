@@ -13,7 +13,7 @@ using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace AutomacaoSeleniumCSharp.TestScript.WebDriverWaiter
 {
-    public class TestWebDriverWait : IAssemblyFixture<BaseClass>
+    public class TestWebDriverWait : IClassFixture<BaseClass>
     {
         private readonly ITestOutputHelper _outputHelper;
 

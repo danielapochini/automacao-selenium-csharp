@@ -9,7 +9,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.BrowserActions
 {
-    public class TestBrowserActions : IAssemblyFixture<BaseClass>
+    public class TestBrowserActions : IClassFixture<BaseClass>
     {
        [Fact]
        public void TestActions()

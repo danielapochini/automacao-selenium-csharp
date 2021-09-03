@@ -11,7 +11,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.JavaScript
 {
-    public class TestJavaScriptClass : IAssemblyFixture<BaseClass>
+    public class TestJavaScriptClass : IClassFixture<BaseClass>
     {
         private readonly By CourseLink = By.XPath("//div[@data-purpose='course-container']/a[@href='/course/selenium-with-c/']");
         private readonly By ShowMore = By.XPath("//h2[@data-purpose='title']/following-sibling::div/button");

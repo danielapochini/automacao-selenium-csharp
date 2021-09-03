@@ -11,7 +11,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.CheckBox
 {
-    public class TestCheckBox : IAssemblyFixture<BaseClass>
+    public class TestCheckBox : IClassFixture<BaseClass>
     {
 
         private readonly ITestOutputHelper _outputHelper;

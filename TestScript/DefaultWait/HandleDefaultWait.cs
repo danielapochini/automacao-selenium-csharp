@@ -12,7 +12,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.DefaultWait
 {
-    public class HandleDefaultWait : IAssemblyFixture<BaseClass>
+    public class HandleDefaultWait : IClassFixture<BaseClass>
     {
         private readonly ITestOutputHelper _outputHelper;
 
@@ -20,8 +20,7 @@ namespace AutomacaoSeleniumCSharp.TestScript.DefaultWait
         {
             _outputHelper = outputHelper;
         }
-
-        [Fact]
+         
         public void TestDefaultWait()
         {
             NavigationHelper.NavigateToUrl(ObjectRepository.Config.GetWebsite());
@@ -29,7 +28,7 @@ namespace AutomacaoSeleniumCSharp.TestScript.DefaultWait
             TextBoxHelper.TypeInTextBox(By.Id("Bugzilla_login"), ObjectRepository.Config.GetUsername());
             TextBoxHelper.TypeInTextBox(By.Id("Bugzilla_password"), ObjectRepository.Config.GetPassword());
             ButtonHelper.ClickButton(By.Id("log_in"));
-             
+            LinkHelper.ClickLink(By.LinkText("Testng"));
             ObjectRepository.Driver.Manage().Timeouts().ImplicitWait = (TimeSpan.FromSeconds(1));
 
             GenericHelper.WaitForWebElement(By.Id("bug_severity"), TimeSpan.FromSeconds(50));

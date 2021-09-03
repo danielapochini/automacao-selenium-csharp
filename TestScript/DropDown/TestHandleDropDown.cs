@@ -11,7 +11,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.DropDown
 {
-    public class TestHandleDropDown : IAssemblyFixture<BaseClass>
+    public class TestHandleDropDown : IClassFixture<BaseClass>
     {
         private readonly ITestOutputHelper _outputHelper;
 
@@ -27,8 +27,8 @@ namespace AutomacaoSeleniumCSharp.TestScript.DropDown
             LinkHelper.ClickLink(By.LinkText("File a Bug"));
             TextBoxHelper.TypeInTextBox(By.Id("Bugzilla_login"), ObjectRepository.Config.GetUsername());
             TextBoxHelper.TypeInTextBox(By.Id("Bugzilla_password"), ObjectRepository.Config.GetPassword());
-            ButtonHelper.ClickButton(By.Id("log_in")); 
-
+            ButtonHelper.ClickButton(By.Id("log_in"));
+            LinkHelper.ClickLink(By.LinkText("Testng"));
             ComboBoxHelper.SelectElement(By.Id("bug_severity"), 2);
             ComboBoxHelper.SelectElement(By.Id("bug_severity"), "blocker");
             foreach (string str in ComboBoxHelper.GetAllItem(By.Id("bug_severity")))

@@ -11,7 +11,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.Button
 {
-    public class TestHandleButton : IAssemblyFixture<BaseClass>
+    public class TestHandleButton : IClassFixture<BaseClass>
     {
         private readonly ITestOutputHelper _outputHelper;
 

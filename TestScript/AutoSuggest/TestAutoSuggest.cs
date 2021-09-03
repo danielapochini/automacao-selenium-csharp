@@ -11,7 +11,7 @@ using Xunit.Extensions.AssemblyFixture;
 
 namespace AutomacaoSeleniumCSharp.TestScript.AutoSuggest
 {
-    public class TestAutoSuggest : IAssemblyFixture<BaseClass>
+    public class TestAutoSuggest : IClassFixture<BaseClass>
     {
         [Fact]
         public void TestAutoSug()
