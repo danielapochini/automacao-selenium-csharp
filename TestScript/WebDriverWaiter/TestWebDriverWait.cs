@@ -28,7 +28,7 @@ namespace AutomacaoSeleniumCSharp.TestScript.WebDriverWaiter
             //SetPageLoadTimeout - For controlling the page load time
             //ObjectRepository.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(60);
             
-            NavigationHelper.NavigateToUrl("https://www.bing.com/?cc=br");
+            NavigationHelper.NavigateToUrl("https://br.yahoo.com/");
             TextBoxHelper.TypeInTextBox(By.XPath("//input[@id='ybar-sbq']"),
                "C#");
         }

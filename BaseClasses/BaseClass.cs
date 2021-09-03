@@ -1,4 +1,5 @@
-﻿using AutomacaoSeleniumCSharp.Configuration;
+﻿using AutomacaoSeleniumCSharp.ComponentHelper;
+using AutomacaoSeleniumCSharp.Configuration;
 using AutomacaoSeleniumCSharp.CustomException;
 using AutomacaoSeleniumCSharp.Settings;
 using OpenQA.Selenium;
@@ -105,6 +106,7 @@ namespace AutomacaoSeleniumCSharp.BaseClasses
             }
             ObjectRepository.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(ObjectRepository.Config.GetPageLoadTimeOut());
             ObjectRepository.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(ObjectRepository.Config.GetElementLoadTimeOut());
+            BrowserHelper.BrowserMaximize();
         }
 
         public static void TearDown()
