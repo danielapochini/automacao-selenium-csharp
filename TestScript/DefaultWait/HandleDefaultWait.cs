@@ -20,7 +20,9 @@ namespace AutomacaoSeleniumCSharp.TestScript.DefaultWait
         {
             _outputHelper = outputHelper;
         }
-         
+        
+
+        [Fact(Skip = "Teste manual")]
         public void TestDefaultWait()
         {
             NavigationHelper.NavigateToUrl(ObjectRepository.Config.GetWebsite());
