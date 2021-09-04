@@ -1,29 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutomacaoSeleniumCSharp.BaseClasses;
 using AutomacaoSeleniumCSharp.Settings;
-using OpenQA.Selenium; 
+using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 
 namespace AutomacaoSeleniumCSharp.PageObject
 {
-    public class HomePage
-    {
+    public class HomePage : PageBase
+    { 
         #region WebElement
 
-        private By QuickSearchTextBox = By.Id("quicksearch_main");
-        private By QuickSearchBtn = By.Id("find");
-        private By FileABugLink = By.LinkText("File a Bug");
+        [FindsBy(How = How.Id, Using = "quicksearch_main")]
+        private IWebElement QuickSearchTextBox;
+
+        [FindsBy(How = How.Id, Using = "find")]
+        [CacheLookup]
+        private IWebElement QuickSearchBtn;
+
+        [FindsBy(How = How.LinkText, Using = "File a Bug")]
+        private IWebElement FileABugLink;
 
         #endregion
-
+  
         #region Actions
 
         public void QuickSearch(string text)
         {
-            ObjectRepository.Driver.FindElement(QuickSearchTextBox).SendKeys(text);
-            ObjectRepository.Driver.FindElement(QuickSearchBtn).Click();
+            QuickSearchTextBox.SendKeys(text);
+            QuickSearchBtn.Click();
         }
 
         #endregion
@@ -32,7 +35,7 @@ namespace AutomacaoSeleniumCSharp.PageObject
 
         public LoginPage NavigateToLogin()
         {
-            ObjectRepository.Driver.FindElement(FileABugLink).Click();
+            FileABugLink.Click();
             return new LoginPage();
         }
 

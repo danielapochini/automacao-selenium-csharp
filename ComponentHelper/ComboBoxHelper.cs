@@ -24,6 +24,13 @@ namespace AutomacaoSeleniumCSharp.ComponentHelper
             select.SelectByText(visibletext);
         }
 
+
+        public static void SelectElement(IWebElement element, string visibletext)
+        {
+            select = new SelectElement(element);
+            select.SelectByText(visibletext);
+        }
+
         public static IList<string> GetAllItem(By locator)
         {
             select = new SelectElement(GenericHelper.GetElement(locator));

@@ -5,37 +5,48 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using AutomacaoSeleniumCSharp.Settings;
+using SeleniumExtras.PageObjects;
+using AutomacaoSeleniumCSharp.BaseClasses;
 
 namespace AutomacaoSeleniumCSharp.PageObject
 {
-    public class LoginPage
-    {
+    public class LoginPage : PageBase
+    { 
         #region WebElement
 
-         private By LoginTextBox = By.Id("Bugzilla_login");
-         private By PassTextBox = By.Id("Bugzilla_password");
-         private By LoginButton = By.Id("log_in");
-        private By HomeLink = By.LinkText("Home");
+        [FindsBy(How = How.Id, Using = "Bugzilla_login")]
+        private IWebElement LoginTextBox;
+
+        [FindsBy(How = How.Id, Using = "Bugzilla_password")]
+        private IWebElement PassTextBox;
+
+        [FindsBy(How = How.Id, Using = "log_in")]
+        [CacheLookup]
+        private IWebElement LoginButton;
+
+        [FindsBy(How = How.LinkText, Using = "Home")]
+        private IWebElement HomeLink;
 
         #endregion
-
+         
         #region Actions
 
         public EnterBug Login(string usename, string password)
         {
-            ObjectRepository.Driver.FindElement(LoginTextBox).SendKeys(usename);
-            ObjectRepository.Driver.FindElement(PassTextBox).SendKeys(password);
-            ObjectRepository.Driver.FindElement(LoginButton).Click();
-            return new EnterBug();
+            LoginTextBox.SendKeys(usename);
+            PassTextBox.SendKeys(password);
+            LoginButton.Click();
+            return new EnterBug(); 
         }
 
         #endregion
 
         #region Navigation
 
-        public void NavigateToHome()
+        public HomePage NavigateToHome()
         {
-            ObjectRepository.Driver.FindElement(HomeLink).Click();
+            HomeLink.Click();
+            return new HomePage();
         }
 
         #endregion

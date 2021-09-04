@@ -5,17 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using AutomacaoSeleniumCSharp.ComponentHelper;
+using SeleniumExtras.PageObjects;
+using AutomacaoSeleniumCSharp.Settings;
+using AutomacaoSeleniumCSharp.BaseClasses;
 
 namespace AutomacaoSeleniumCSharp.PageObject
 {
-    public class BugDetail
-    {
+    public class BugDetail : PageBase
+    { 
         #region WebElement
 
-        private By SeverityDropDown = By.Id("bug_severity");
+        [FindsBy(How = How.Id, Using = "bug_severity")]
+        private IWebElement SeverityDropDown;
 
         #endregion
-
+           
         #region Action
 
         public void SelectFromSeverity(string value)

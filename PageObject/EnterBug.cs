@@ -5,22 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using AutomacaoSeleniumCSharp.Settings;
+using SeleniumExtras.PageObjects;
+using AutomacaoSeleniumCSharp.BaseClasses;
 
 namespace AutomacaoSeleniumCSharp.PageObject
 {
-    public class EnterBug
-    {
-        #region WenElement
+    public class EnterBug : PageBase
+    { 
+        #region WebElement
 
-         private By Testng = By.LinkText("Testng");
+        [FindsBy(How = How.LinkText, Using = "Testng")]
+        private IWebElement Testng;
 
         #endregion
-
+           
         #region Navigation
 
         public BugDetail NavigateToDetail()
         {
-            ObjectRepository.Driver.FindElement(Testng).Click();
+            Testng.Click();
             return new BugDetail();
         }
          
