@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using Xunit;
 using Xunit.Abstractions;
-using Xunit.Extensions.AssemblyFixture;
+
 
 namespace AutomacaoSeleniumCSharp.TestScript.WebElement
 {

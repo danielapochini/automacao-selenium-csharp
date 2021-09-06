@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using Xunit;
 using Xunit.Abstractions;
-using Xunit.Extensions.AssemblyFixture;
+
 
 namespace AutomacaoSeleniumCSharp.TestScript.FindElements
 {

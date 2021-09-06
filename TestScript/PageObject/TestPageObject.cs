@@ -8,7 +8,7 @@ using AutomacaoSeleniumCSharp.ComponentHelper;
 using AutomacaoSeleniumCSharp.PageObject;
 using AutomacaoSeleniumCSharp.Settings;
 using Xunit;
-using Xunit.Extensions.AssemblyFixture;
+
 
 namespace AutomacaoSeleniumCSharp.TestScript.PageObject
 {

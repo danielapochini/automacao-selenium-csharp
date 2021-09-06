@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using Xunit;
-using Xunit.Extensions.AssemblyFixture;
+
 
 namespace AutomacaoSeleniumCSharp.TestScript.JavaScript
 {
