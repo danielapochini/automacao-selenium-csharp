@@ -11,20 +11,27 @@ using AutomacaoSeleniumCSharp.BaseClasses;
 namespace AutomacaoSeleniumCSharp.PageObject
 {
     public class EnterBug : PageBase
-    { 
+    {
+        private IWebDriver driver;
+
         #region WebElement
 
         [FindsBy(How = How.LinkText, Using = "Testng")]
         private IWebElement Testng;
 
         #endregion
-           
+
+        public EnterBug(IWebDriver _driver) : base(_driver)
+        {
+            this.driver = _driver;
+        }
+
         #region Navigation
 
         public BugDetail NavigateToDetail()
         {
             Testng.Click();
-            return new BugDetail();
+            return new BugDetail(driver);
         }
          
 

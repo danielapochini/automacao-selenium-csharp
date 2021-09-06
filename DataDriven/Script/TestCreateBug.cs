@@ -16,7 +16,7 @@ namespace AutomacaoSeleniumCSharp.DataDriven.Script
         public void TestBug(string severity, string hardware, string os, string summary, string desc)
         {
             NavigationHelper.NavigateToUrl(ObjectRepository.Config.GetWebsite());
-            HomePage hpPage = new HomePage();
+            HomePage hpPage = new HomePage(ObjectRepository.Driver);
             LoginPage loginPage = hpPage.NavigateToLogin();
             var ePage = loginPage.Login(ObjectRepository.Config.GetUsername(), ObjectRepository.Config.GetPassword());
             var bugPage = ePage.NavigateToDetail();

@@ -12,7 +12,9 @@ using AutomacaoSeleniumCSharp.BaseClasses;
 namespace AutomacaoSeleniumCSharp.PageObject
 {
     public class BugDetail : PageBase
-    { 
+    {
+        private IWebDriver driver;
+
         #region WebElement
 
         [FindsBy(How = How.Id, Using = "bug_severity")]
@@ -37,6 +39,12 @@ namespace AutomacaoSeleniumCSharp.PageObject
         private IWebElement Commit;
         //private IWebElement Commit => driver.FindElement(By.Id("commit"));
         #endregion
+
+        public BugDetail(IWebDriver _driver) : base(_driver)
+        {
+            this.driver = _driver;
+        }
+
 
         #region Action
 
@@ -72,7 +80,7 @@ namespace AutomacaoSeleniumCSharp.PageObject
         public new HomePage Logout()
         {
             base.Logout();
-            return new HomePage();
+            return new HomePage(driver);
         }
         #endregion
     }

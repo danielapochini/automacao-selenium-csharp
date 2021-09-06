@@ -8,13 +8,12 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using System;
-using Xunit;
-using Xunit.Extensions.AssemblyFixture;
-
-[assembly: TestFramework(AssemblyFixtureFramework.TypeName, AssemblyFixtureFramework.AssemblyName)]
-
+using TechTalk.SpecFlow;
+using Xunit; 
+ 
 namespace AutomacaoSeleniumCSharp.BaseClasses
 {
+    [Binding]
     public class BaseClass : IDisposable
     {
         public BaseClass()
@@ -41,6 +40,9 @@ namespace AutomacaoSeleniumCSharp.BaseClasses
         {
             ChromeOptions option = new ChromeOptions();
             option.AddArgument("start-maximized");
+            option.AddArgument("no-sandbox");
+            option.AddArgument("proxy-server='direct://'");
+            option.AddArgument("proxy-bypass-list=*");
             option.AddAdditionalCapability(CapabilityType.AcceptSslCertificates, true, true);
             return option;
         }
@@ -71,7 +73,11 @@ namespace AutomacaoSeleniumCSharp.BaseClasses
 
         private static ChromeDriver GetChromeDriver()
         {
-            ChromeDriver driver = new ChromeDriver(GetChromeOptions());
+            ChromeDriver driver = new ChromeDriver(
+                ChromeDriverService.CreateDefaultService(), 
+                GetChromeOptions(), 
+                TimeSpan.FromMinutes(5)
+            );
             return driver;
         }
 
@@ -81,7 +87,7 @@ namespace AutomacaoSeleniumCSharp.BaseClasses
             return driver;
         }
 
-
+        [BeforeScenario]
         public static void InitWebdriver()
         {
             ObjectRepository.Config = new AppSettingsReader(); 
@@ -104,11 +110,16 @@ namespace AutomacaoSeleniumCSharp.BaseClasses
                 default:
                     throw new NoSuitableDriverFound("Driver Not Found : " + ObjectRepository.Config.GetBrowser().ToString());
             }
-            ObjectRepository.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(ObjectRepository.Config.GetPageLoadTimeOut());
-            ObjectRepository.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(ObjectRepository.Config.GetElementLoadTimeOut());
+            ObjectRepository.Driver.Manage().Cookies.DeleteAllCookies();
+            ObjectRepository.Driver.Manage()
+                .Timeouts().PageLoad.Add(TimeSpan.FromSeconds(ObjectRepository.Config.GetPageLoadTimeOut()));
+            ObjectRepository.Driver.Manage().
+                Timeouts().ImplicitWait.Add(TimeSpan.FromSeconds(ObjectRepository.Config.GetElementLoadTimeOut()));
+            ObjectRepository.Driver.Manage().Cookies.DeleteAllCookies();
             BrowserHelper.BrowserMaximize();
         }
 
+        [AfterScenario]
         public static void TearDown()
         {
             if (ObjectRepository.Driver != null)
@@ -117,7 +128,7 @@ namespace AutomacaoSeleniumCSharp.BaseClasses
                 ObjectRepository.Driver.Quit();
             } 
         }
-
+         
         public void Dispose()
         {
             TearDown();

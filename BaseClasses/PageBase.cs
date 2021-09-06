@@ -6,17 +6,21 @@ using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TechTalk.SpecFlow;
 
 namespace AutomacaoSeleniumCSharp.BaseClasses
-{
+{ 
     public class PageBase
-    { 
+    {
+        private IWebDriver driver;
+
         [FindsBy(How = How.LinkText, Using = "Home")]
         private IWebElement HomeLink;
 
-        public PageBase()
+        public PageBase(IWebDriver _driver)
         {
             PageFactory.InitElements(ObjectRepository.Driver, this);
+            this.driver = _driver;
         }
 
         public void Logout()
@@ -32,12 +36,12 @@ namespace AutomacaoSeleniumCSharp.BaseClasses
         public HomePage NaviGateToHomePage()
         {
             HomeLink.Click();
-            return new HomePage();
+            return new HomePage(ObjectRepository.Driver);
         }
 
         public string Title
         {
-            get { return ObjectRepository.Driver.Title; }
+            get { return driver.Title; }
         }
     }
 }

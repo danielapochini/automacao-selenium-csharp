@@ -19,7 +19,7 @@ namespace AutomacaoSeleniumCSharp.TestScript.PageObject
         public void TestPage()
         {
             NavigationHelper.NavigateToUrl(ObjectRepository.Config.GetWebsite());
-            HomePage homePage = new HomePage();
+            HomePage homePage = new HomePage(ObjectRepository.Driver);
             LoginPage loginPage = homePage.NavigateToLogin();
             EnterBug enterBug = loginPage.Login(ObjectRepository.Config.GetUsername(), ObjectRepository.Config.GetPassword());
             BugDetail bugDetail = enterBug.NavigateToDetail();

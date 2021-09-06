@@ -6,7 +6,8 @@ using SeleniumExtras.PageObjects;
 namespace AutomacaoSeleniumCSharp.PageObject
 {
     public class HomePage : PageBase
-    { 
+    {
+        private readonly IWebDriver _driver;
         #region WebElement
 
         [FindsBy(How = How.Id, Using = "quicksearch_main")]
@@ -20,7 +21,12 @@ namespace AutomacaoSeleniumCSharp.PageObject
         private IWebElement FileABugLink;
 
         #endregion
-  
+
+        public HomePage(IWebDriver driver) : base(driver)
+        {
+            this._driver = driver;
+        }
+
         #region Actions
 
         public void QuickSearch(string text)
@@ -36,7 +42,7 @@ namespace AutomacaoSeleniumCSharp.PageObject
         public LoginPage NavigateToLogin()
         {
             FileABugLink.Click();
-            return new LoginPage();
+            return new LoginPage(_driver);
         }
 
         #endregion

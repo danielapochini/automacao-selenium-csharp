@@ -11,7 +11,9 @@ using AutomacaoSeleniumCSharp.BaseClasses;
 namespace AutomacaoSeleniumCSharp.PageObject
 {
     public class LoginPage : PageBase
-    { 
+    {
+        private IWebDriver driver;
+
         #region WebElement
 
         [FindsBy(How = How.Id, Using = "Bugzilla_login")]
@@ -28,7 +30,13 @@ namespace AutomacaoSeleniumCSharp.PageObject
         private IWebElement HomeLink;
 
         #endregion
-         
+
+        public LoginPage(IWebDriver _driver) : base(_driver)
+        {
+            this.driver = _driver;
+
+        }
+
         #region Actions
 
         public EnterBug Login(string usename, string password)
@@ -36,7 +44,7 @@ namespace AutomacaoSeleniumCSharp.PageObject
             LoginTextBox.SendKeys(usename);
             PassTextBox.SendKeys(password);
             LoginButton.Click();
-            return new EnterBug(); 
+            return new EnterBug(driver); 
         }
 
         #endregion
@@ -46,7 +54,7 @@ namespace AutomacaoSeleniumCSharp.PageObject
         public HomePage NavigateToHome()
         {
             HomeLink.Click();
-            return new HomePage();
+            return new HomePage(driver);
         }
 
         #endregion
