@@ -43,6 +43,7 @@ namespace AutomacaoSeleniumCSharp.BaseClasses
             option.AddArgument("no-sandbox");
             option.AddArgument("proxy-server='direct://'");
             option.AddArgument("proxy-bypass-list=*");
+            //option.AddArgument("--headless");
             option.AddAdditionalCapability(CapabilityType.AcceptSslCertificates, true, true);
             return option;
         }
